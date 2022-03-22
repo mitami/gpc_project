@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="Collectable" type="AnimatedSprite"]
+
+[node name="Area2D" type="Area2D" parent="."]
