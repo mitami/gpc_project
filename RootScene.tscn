@@ -586,4 +586,4 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="Collectable" parent="." instance=ExtResource( 5 )]
-position = Vector2( 441, 447 )
+position = Vector2( 288, 88 )
