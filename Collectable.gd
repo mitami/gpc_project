@@ -1,6 +1,7 @@
 extends Area2D
 
 func _on_Collectable_body_entered(body):
+	# TODO: this should trigger some function in the scoreboard element
 	print("Coin collided on.")
 	queue_free()
 

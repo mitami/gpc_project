@@ -578,6 +578,12 @@ centered = false
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 3 )]
 
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+current = true
+limit_left = -185
+limit_bottom = 2250
+editor_draw_limits = true
+
 [node name="GoalArea" parent="." instance=ExtResource( 4 )]
 position = Vector2( 441, 447 )
 collision_layer = 16
