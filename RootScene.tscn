@@ -577,8 +577,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 3 )]
-collision_layer = 2
-collision_mask = 29
 
 [node name="GoalArea" parent="." instance=ExtResource( 4 )]
 position = Vector2( 441, 447 )
