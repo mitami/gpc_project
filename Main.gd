@@ -1,6 +1,8 @@
 extends Node2D
 
 var current_score = 0
+var current_level = 1
+var last_level = 2
 
 # The Main script/node handles all the game logic, so we listen to signals here
 func _on_Collectable_coin_collected():
@@ -10,6 +12,15 @@ func _on_Collectable_coin_collected():
 
 func _on_GoalArea_player_entered():
 	print('Player entered goal, changing level!')
+	# Remove the current level
+	get_node('Level%s' % current_level).queue_free()
+	current_level = current_level + 1
+	# Load the next level if such exists
+	if current_level <= last_level:
+		var next_level = load('Level%s.tscn' % current_level)
+		self.add_child(next_level.instance())
+	else:
+		print('There are no more levels!')
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -19,8 +30,9 @@ func _ready():
 	for collectable in collectables:
 		print('Collectables: ' + collectable.name)
 		collectable.connect("collected_coin", self, "_on_Collectable_coin_collected")
-		
-	$GoalArea.connect("player_entered", self, "_on_GoalArea_player_entered")
+	
+	# There should only be one "LevelX" at any time, this needs to be dynamically selected here
+	$Level1/GoalArea.connect("player_entered", self, "_on_GoalArea_player_entered")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
