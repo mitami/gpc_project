@@ -1,8 +1,11 @@
 extends Area2D
 
+signal collected_coin
+
 func _on_Collectable_body_entered(body):
 	# TODO: this should trigger some function in the scoreboard element
 	print("Coin collided on.")
+	emit_signal("collected_coin")
 	queue_free()
 
 # Declare member variables here. Examples:

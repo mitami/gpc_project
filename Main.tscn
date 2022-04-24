@@ -1,10 +1,12 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://tilesheet.png" type="Texture" id=1]
-[ext_resource path="res://space_mirrored.png" type="Texture" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PlayerCharacter.tscn" type="PackedScene" id=3]
-[ext_resource path="res://GoalArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Collectable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Collectable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GoalArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tilesheet.png" type="Texture" id=6]
+[ext_resource path="res://space_mirrored.png" type="Texture" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -137,7 +139,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 
 [sub_resource type="TileSet" id=44]
 0/name = "tilesheet.png 0"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 128, 0, 64, 64 )
@@ -158,7 +160,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 0/z_index = 0
 1/name = "tilesheet.png 1"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 6 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 64, 0, 64, 64 )
@@ -179,7 +181,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 1/z_index = 0
 2/name = "tilesheet.png 2"
-2/texture = ExtResource( 1 )
+2/texture = ExtResource( 6 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 192, 0, 64, 64 )
@@ -200,7 +202,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 2/z_index = 0
 3/name = "tilesheet.png 3"
-3/texture = ExtResource( 1 )
+3/texture = ExtResource( 6 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 256, 0, 64, 64 )
@@ -221,7 +223,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 3/z_index = 0
 4/name = "tilesheet.png 4"
-4/texture = ExtResource( 1 )
+4/texture = ExtResource( 6 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 448, 64, 64, 64 )
@@ -242,7 +244,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 4/z_index = 0
 5/name = "tilesheet.png 5"
-5/texture = ExtResource( 1 )
+5/texture = ExtResource( 6 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 512, 64, 64, 64 )
@@ -263,7 +265,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 5/z_index = 0
 6/name = "tilesheet.png 6"
-6/texture = ExtResource( 1 )
+6/texture = ExtResource( 6 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 320, 64, 32, 64 )
@@ -284,7 +286,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 6/z_index = 0
 7/name = "tilesheet.png 7"
-7/texture = ExtResource( 1 )
+7/texture = ExtResource( 6 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 416, 64, 32, 64 )
@@ -305,7 +307,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 7/z_index = 0
 8/name = "tilesheet.png 8"
-8/texture = ExtResource( 1 )
+8/texture = ExtResource( 6 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 64, 64 )
@@ -351,7 +353,7 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 8/z_index = 0
 9/name = "tilesheet.png 9"
-9/texture = ExtResource( 1 )
+9/texture = ExtResource( 6 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 576, 192 )
@@ -559,7 +561,8 @@ points = PoolVector2Array( 64, 0, 64, 0, 64, 64, 0, 64, 64, 0, 64, 0, 64, 64, 0,
 } ]
 9/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 44 )
@@ -573,7 +576,7 @@ tile_data = PoolIntArray( 196605, 4, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0
 motion_mirroring = Vector2( 4000, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Space"]
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
 centered = false
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 3 )]
@@ -584,10 +587,12 @@ limit_left = -185
 limit_bottom = 2250
 editor_draw_limits = true
 
-[node name="GoalArea" parent="." instance=ExtResource( 4 )]
+[node name="GoalArea" parent="." instance=ExtResource( 5 )]
 position = Vector2( 441, 447 )
 collision_layer = 16
 collision_mask = 2
 
-[node name="Collectable" parent="." instance=ExtResource( 5 )]
+[node name="Collectable" parent="." instance=ExtResource( 4 )]
 position = Vector2( 288, 88 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
