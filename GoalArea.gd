@@ -1,10 +1,6 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+signal player_entered
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,8 +8,8 @@ func _ready():
 	
 func _on_GoalArea_body_entered(body):
 	print('Entered goal!')
-	# Should emit event to increase level, or should that be on level load?
-	# Should change the level. Pick level based on level label?
+	# Emit a signal and let Main script handle level changing
+	emit_signal("player_entered")
 	pass
 
 
