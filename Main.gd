@@ -23,16 +23,21 @@ func _on_GoalArea_player_entered():
 		print('There are no more levels!')
 	
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# Connect all signals on start
+func connect_signals():
+	print('Connecting signals to Main...')
 	var collectables = get_tree().get_nodes_in_group("coin")
 	for collectable in collectables:
 		print('Collectables: ' + collectable.name)
 		collectable.connect("collected_coin", self, "_on_Collectable_coin_collected")
 	
 	# There should only be one "LevelX" at any time, this needs to be dynamically selected here
-	$Level1/GoalArea.connect("player_entered", self, "_on_GoalArea_player_entered")
+	print('Current level when connecting goal signal: %s' % current_level)
+	get_node('Level%s/GoalArea' % current_level).connect("player_entered", self, "_on_GoalArea_player_entered")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Connect all signals on start
+	connect_signals()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
