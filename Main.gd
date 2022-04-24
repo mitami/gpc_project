@@ -1,8 +1,8 @@
 extends Node2D
 
 var current_score = 0
-var current_level = 1
-var last_level = 2
+var current_level = 0
+var final_level = 2
 
 # The Main script/node handles all the game logic, so we listen to signals here
 func _on_Collectable_coin_collected():
@@ -13,10 +13,13 @@ func _on_Collectable_coin_collected():
 func _on_GoalArea_player_entered():
 	print('Player entered goal, changing level!')
 	# Remove the current level
-	get_node('Level%s' % current_level).queue_free()
+	var current_level_node = get_node('Level%s' % current_level)
+	if current_level_node != null:
+		current_level_node.queue_free()
+
 	current_level = current_level + 1
 	# Load the next level if such exists
-	if current_level <= last_level:
+	if current_level <= final_level:
 		var next_level = load('Level%s.tscn' % current_level)
 		self.add_child(next_level.instance())
 	else:
@@ -36,9 +39,12 @@ func connect_signals():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# We kind of hackily use the signal handler to instantiate the first level too.
+	if current_level == 0:
+		_on_GoalArea_player_entered()
+
 	# Connect all signals on start
 	connect_signals()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
