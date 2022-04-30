@@ -6,13 +6,21 @@ var walk_speed = 35
 var jump_speed = -1000
 var gravity = 2500
 var slowdown = 1000
+var freeze = true
 
 var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	# We hide the Player character until the user starts the game from the UI
+	hide()
 
+func start(pos):
+	if pos:
+		position = pos
+
+	freeze = false
+	show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -28,11 +36,12 @@ func get_input():
 	if(Input.is_action_pressed("MoveUp")):
 		#velocity.y -= 1
 		if is_on_floor():
-			print("Was on floor")
 			velocity.y = jump_speed
 	#velocity = velocity.normalized() * speed
 	
 func _physics_process(delta):
+	if freeze:
+		return
 	velocity.y += gravity * delta
 	if velocity.x < 0:
 		velocity.x += slowdown * delta

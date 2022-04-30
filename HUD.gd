@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+signal start_game
+
+func _on_StartButton_pressed():
+	$StartButton.hide()
+	emit_signal("start_game")
+
 func update_score(score, max_score):
 	$ScoreLabel.text = 'Score: %s / %s' % [score, max_score]
 	

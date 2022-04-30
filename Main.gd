@@ -33,16 +33,24 @@ func _on_GoalArea_player_entered():
 		connect_signals()
 	else:
 		print('There are no more levels!')
-	
 
+func start_game():
+	current_score = 0
+	current_level = 0
+	# We kind of hackily use the signal handler to instantiate the first level too.
+	if current_level == 0:
+		_on_GoalArea_player_entered()
+
+	# Connect all signals on start
+	# connect_signals()
+	$PlayerCharacter.start(false) #(Vector2(0, 0))
+	
 func connect_signals():
 	print('Connecting signals to Main...')
 	var collectables = get_tree().get_nodes_in_group("coin")
 	for collectable in collectables:
 		collectable.connect("collected_coin", self, "_on_Collectable_coin_collected")
 	
-	# There should only be one "LevelX" at any time, this needs to be dynamically selected here
-	print('Current level when connecting goal signal: %s' % current_level)
 	get_node('Level%s/GoalArea' % current_level).connect("player_entered", self, "_on_GoalArea_player_entered")
 	
 	# Now when we already have the list of all collectables, we can use it to determine the maximum score
@@ -51,12 +59,7 @@ func connect_signals():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# We kind of hackily use the signal handler to instantiate the first level too.
-	if current_level == 0:
-		_on_GoalArea_player_entered()
-
-	# Connect all signals on start
-	connect_signals()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
