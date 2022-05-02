@@ -22,6 +22,12 @@ func start(pos):
 	freeze = false
 	show()
 
+func reset():
+	position = Vector2(0, 0)
+	freeze = true
+	velocity.y = 0
+	velocity.x = 0
+	hide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -1,2 +1,2 @@
-﻿63398
+﻿54332
 C:/Users/mikko/Desktop/Godot_v3.4.3-stable_mono_win64/Godot_v3.4.3-stable_mono_win64/Godot_v3.4.3-stable_mono_win64.exe

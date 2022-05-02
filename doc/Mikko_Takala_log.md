@@ -16,3 +16,4 @@
 | 24.04.2022 | 13:30 - 15:00 | 1.5h | Added restriction so Player has to collect all coins in a level in order to use the goal to start the next level. Level indicator now updates correctly and score indicator shows how many coins there are available in the level. |
 | 30.04.2022 | 09:00 - 10:30 | 1.5h | Added startscreen and after some issues got the Player character and level hidden until user clicks the "Start" button on the UI |
 | 30.04.2022 | 12:00 - 13:30 | 1.5h | Moved Camera to be a child of the Player character and re-configured it's limits. Trying to get a signal when Player goes out of the screen to enable a 'game over' condition. Signal of Player exiting screen eg. "dying" is now connected and the game resets and returns to the start screen where player can restart game from first level by pressing the start button. |
+| 02.05.2022 | 19:30-19:45 | 0.25h | Added a flag sprite to the goals to make them actually visible. |

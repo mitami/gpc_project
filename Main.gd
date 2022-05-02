@@ -33,6 +33,22 @@ func _on_GoalArea_player_entered():
 		connect_signals()
 	else:
 		print('There are no more levels!')
+		
+func reset_game():
+	print('Resetting game...')
+	var currently_loaded_level = get_node('Level%s' % current_level)
+	if currently_loaded_level != null:
+		currently_loaded_level.queue_free()
+	
+	current_score = 0
+	current_level = 0
+	score_target = 0
+	$PlayerCharacter.reset()
+	$HUD/StartButton.set_visible(true)
+
+func game_over():
+	print('Player died!')
+	reset_game()
 
 func start_game():
 	current_score = 0
@@ -47,12 +63,17 @@ func start_game():
 	
 func connect_signals():
 	print('Connecting signals to Main...')
+	# Coins
 	var collectables = get_tree().get_nodes_in_group("coin")
 	for collectable in collectables:
 		collectable.connect("collected_coin", self, "_on_Collectable_coin_collected")
 	
+	# Goal
 	get_node('Level%s/GoalArea' % current_level).connect("player_entered", self, "_on_GoalArea_player_entered")
 	
+	
+	# Player leaving screen
+	$PlayerCharacter/VisibilityNotifier2D.connect("screen_exited", self, "game_over")
 	# Now when we already have the list of all collectables, we can use it to determine the maximum score
 	score_target = collectables.size()
 	$HUD.update_score(current_score, score_target)
