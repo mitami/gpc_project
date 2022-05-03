@@ -1,7 +1,8 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://GoalArea.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tilesheet.png" type="Texture" id=5]
 [ext_resource path="res://space_mirrored.png" type="Texture" id=6]
 
@@ -611,3 +612,6 @@ position = Vector2( 4649, 149 )
 
 [node name="Collectable10" parent="." instance=ExtResource( 2 )]
 position = Vector2( 5599, 204 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2043, 1038 )

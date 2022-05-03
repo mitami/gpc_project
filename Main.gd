@@ -74,6 +74,8 @@ func connect_signals():
 	
 	# Player leaving screen
 	$PlayerCharacter/VisibilityNotifier2D.connect("screen_exited", self, "game_over")
+	# Player colliding with an enemy
+	$PlayerCharacter.connect("player_hit_by_enemy", self, "game_over")
 	# Now when we already have the list of all collectables, we can use it to determine the maximum score
 	score_target = collectables.size()
 	$HUD.update_score(current_score, score_target)

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_hit_by_enemy
+
 export (int) var speed = 200
 
 var walk_speed = 35
@@ -59,3 +61,11 @@ func _physics_process(delta):
 			velocity.x = 0
 	get_input()
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Enemy":
+		print('Collided with an enemy!')
+		emit_signal("player_hit_by_enemy")
+	else:
+		print('Collided with something else than an Enemy')
