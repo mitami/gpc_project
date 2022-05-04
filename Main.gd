@@ -1,5 +1,7 @@
 extends Node2D
 
+var game_started = false
+
 var current_score = 0
 var score_target = 0
 var current_level = 0
@@ -34,8 +36,16 @@ func _on_GoalArea_player_entered():
 	else:
 		print('There are no more levels!')
 		
+func spawn_bullet(target):
+	var bullet = load('Bullet.tscn').instance()
+	get_node('Level%s' % current_level).add_child(bullet)
+	bullet.set_position($PlayerCharacter.get_position())
+	bullet.set_target(target)
+		
 func reset_game():
 	print('Resetting game...')
+	game_started = false
+	
 	var currently_loaded_level = get_node('Level%s' % current_level)
 	if currently_loaded_level != null:
 		currently_loaded_level.queue_free()
@@ -51,6 +61,7 @@ func game_over():
 	reset_game()
 
 func start_game():
+	game_started = true
 	current_score = 0
 	current_level = 0
 	# We kind of hackily use the signal handler to instantiate the first level too.
@@ -85,5 +96,8 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _input(event):
+	if game_started:
+		if Input.is_mouse_button_pressed(1):
+			print('Spawning a new bullet')
+			spawn_bullet(get_local_mouse_position())

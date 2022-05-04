@@ -65,6 +65,7 @@ MoveDown={
 2d_physics/layer_3="collectables"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="teleports"
+2d_physics/layer_6="bullets"
 
 [physics]
 
