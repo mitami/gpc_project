@@ -6,10 +6,12 @@ extends Area2D
 # var b = "text"
 var speed = 1000
 var target = Vector2(0, 0)
+var direction = Vector2(0, 0)
 
 func set_target(new_target):
 	print('Setting new target...')
 	target = new_target
+	direction = position.direction_to(target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,4 +20,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = position.move_toward(target, delta * speed)
+	position = position + direction * delta * speed
