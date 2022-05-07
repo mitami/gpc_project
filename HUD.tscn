@@ -30,5 +30,13 @@ margin_bottom = 40.0
 text = "START"
 script = ExtResource( 2 )
 
+[node name="Message1" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -34.0
+margin_top = 233.0
+margin_right = 31.0
+margin_bottom = 247.0
+
 [connection signal="start_game" from="." to="." method="new_game"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

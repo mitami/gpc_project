@@ -66,6 +66,8 @@ func reset_game():
 
 func game_over():
 	print('Player died!')
+	$HUD/Message1.set_text("You died!")
+	$HUD/Message1.show()
 	reset_game()
 
 func start_game():
@@ -76,9 +78,9 @@ func start_game():
 	if current_level == 0:
 		_on_GoalArea_player_entered()
 
-	# Connect all signals on start
 	# connect_signals()
 	$PlayerCharacter.start(false) #(Vector2(0, 0))
+	$HUD/Message1.hide()
 	
 func connect_signals():
 	print('Connecting signals to Main...')
