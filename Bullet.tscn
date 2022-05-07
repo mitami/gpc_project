@@ -4,6 +4,7 @@
 [ext_resource path="res://platformerGraphicsDeluxe_Updated/Items/coinSilver.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 3.16228
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 32
@@ -14,7 +15,12 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.582143, 0.585714 )
+position = Vector2( 2.86102e-06, -9.53674e-07 )
+scale = Vector2( 0.191072, 0.192857 )
 texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -9.53674e-07, -9.53674e-07 )
+scale = Vector2( 0.35, 0.35 )
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

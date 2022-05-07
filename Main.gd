@@ -7,6 +7,8 @@ var score_target = 0
 var current_level = 0
 var final_level = 2
 
+var can_shoot = true
+
 # The Main script/node handles all the game logic, so we listen to signals here
 func _on_Collectable_coin_collected():
 	print("player collected a coin")
@@ -37,10 +39,16 @@ func _on_GoalArea_player_entered():
 		print('There are no more levels!')
 		
 func spawn_bullet(target):
-	var bullet = load('Bullet.tscn').instance()
-	get_node('Level%s' % current_level).add_child(bullet)
-	bullet.set_position($PlayerCharacter.get_position())
-	bullet.set_target(target)
+	if can_shoot:
+		var bullet = load('Bullet.tscn').instance()
+		get_node('Level%s' % current_level).add_child(bullet)
+		can_shoot = false
+		bullet.connect('destroyed', self, 'on_bullet_destroyed')
+		bullet.set_position($PlayerCharacter.get_position())
+		bullet.set_target(target)
+		
+func on_bullet_destroyed():
+	can_shoot = true
 		
 func reset_game():
 	print('Resetting game...')
@@ -99,5 +107,5 @@ func _ready():
 func _input(event):
 	if game_started:
 		if Input.is_mouse_button_pressed(1):
-			print('Spawning a new bullet')
+			print('Trying to spawn a new bullet')
 			spawn_bullet(get_local_mouse_position())
