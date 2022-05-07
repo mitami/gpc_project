@@ -21,3 +21,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position = position + direction * delta * speed
+
+
+func _on_Bullet_body_entered(body):
+	# The bullet hit something, so let's destroy it
+	queue_free()
