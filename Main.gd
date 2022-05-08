@@ -37,6 +37,9 @@ func _on_GoalArea_player_entered():
 		connect_signals()
 	else:
 		print('There are no more levels!')
+	
+	$PlayerCharacter.reset()
+	$PlayerCharacter.start(false)
 		
 func spawn_bullet(target):
 	if can_shoot:
@@ -78,7 +81,6 @@ func start_game():
 	if current_level == 0:
 		_on_GoalArea_player_entered()
 
-	# connect_signals()
 	$PlayerCharacter.start(false) #(Vector2(0, 0))
 	$HUD/Message1.hide()
 	

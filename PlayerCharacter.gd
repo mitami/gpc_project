@@ -25,6 +25,7 @@ func start(pos):
 	show()
 
 func reset():
+	print('Setting Player position to 0,0')
 	position = Vector2(0, 0)
 	freeze = true
 	velocity.y = 0
