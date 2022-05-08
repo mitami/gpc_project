@@ -10,6 +10,8 @@ var gravity = 2500
 var slowdown = 1000
 var freeze = true
 
+var stop_on_next_animation_loop = false
+
 var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
@@ -36,8 +38,10 @@ func reset():
 
 func get_input():
 	if(Input.is_action_pressed("MoveRight")):
+		$Sprite.play()
 		velocity.x += walk_speed
 	if(Input.is_action_pressed("MoveLeft")):
+		$Sprite.play()
 		velocity.x -= walk_speed
 	#if(Input.is_action_pressed("MoveDown")):
 		#velocity.y += 1
@@ -47,6 +51,11 @@ func get_input():
 			velocity.y = jump_speed
 	#velocity = velocity.normalized() * speed
 	
+func _on_Sprite_animation_finished():
+	if stop_on_next_animation_loop:
+		$Sprite.stop()
+		stop_on_next_animation_loop = false
+
 func _physics_process(delta):
 	if freeze:
 		return
@@ -55,10 +64,12 @@ func _physics_process(delta):
 		velocity.x += slowdown * delta
 		if velocity.x > 0:
 			velocity.x = 0
+			stop_on_next_animation_loop = true
 	elif velocity.x > 0:
 		velocity.x -= slowdown * delta
 		if velocity.x < 0:
 			velocity.x = 0
+			stop_on_next_animation_loop = true
 	get_input()
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
