@@ -23,3 +23,4 @@
 | 07.05.2022 | 10:50 - 12:30 | 1.5h | Making the bullets better: add collision to level materials and enemies, add effect when hitting enemies (enemy disappears, bullets disappear on all collisions). |
 | 07.05.2022 | 20:30 - 20:45 | 0.25h | A text message is shown to Player when they die instead of just making the level disappear and showing start button. |
 | 08.05.2022 | 10:15 - 11:00 | 0.75h | Added an animation to the player when it walks. Animation starts on movement key press, and ends when player velocity on the x-axis reaches 0. Animation now also runs to the end instead of leaving the character in a weird pose in the middle of the animation. Best would be a reset of the animation or something, becaues now the animation sometimes takes "too long" to finish when player has already been stopped, but have to figure that out later.|
+| 15.05.2022 | 17:30 -  | h |  |

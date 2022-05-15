@@ -7,3 +7,6 @@ build/
 lib/
 exports/
 export/
+
+# Word temporary files
+*.tmp
