@@ -1,10 +1,19 @@
 extends CanvasLayer
 
 signal start_game
+signal restart_level
 
 func _on_StartButton_pressed():
-	$StartButton.hide()
+	hide_buttons()
 	emit_signal("start_game")
+	
+func _on_RestartButton_pressed():
+	hide_buttons()
+	emit_signal("restart_level")
+	
+func hide_buttons():
+	$StartButton.hide()
+	$RestartButton.hide()
 
 func update_score(score, max_score):
 	$ScoreLabel.text = 'Score: %s / %s' % [score, max_score]

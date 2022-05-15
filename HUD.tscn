@@ -27,7 +27,7 @@ margin_left = -148.5
 margin_top = -40.0
 margin_right = 148.5
 margin_bottom = 40.0
-text = "START"
+text = "START NEW GAME"
 script = ExtResource( 2 )
 
 [node name="Message1" type="Label" parent="."]
@@ -38,5 +38,14 @@ margin_top = 233.0
 margin_right = 31.0
 margin_bottom = 247.0
 
+[node name="RestartButton" type="Button" parent="."]
+margin_left = 492.0
+margin_top = 442.0
+margin_right = 788.0
+margin_bottom = 519.0
+text = "RESTART CURRENT LEVEL"
+
+[connection signal="restart_level" from="." to="." method="restart_level"]
 [connection signal="start_game" from="." to="." method="new_game"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
